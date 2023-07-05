@@ -43,8 +43,12 @@ const config = {
     "comma-dangle": "off",
     "eol-last": "off",
     "no-unused-vars": "warn",
-    "no-console": "warn",
+    "no-console": "error",
     "jquery/no-ajax": "error",
+    "max-len": "off",
+    "space-before-function-paren": "off",
+    "computed-property-spacing": "off",
+    "curly": "off"
   },
   plugins: [
     "jquery"
