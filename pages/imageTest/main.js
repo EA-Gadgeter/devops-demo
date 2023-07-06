@@ -1,5 +1,5 @@
 import template from "./index.html?raw";
-import "./styles.css";
+import styles from "./styles.css?raw";
 
 import imagen2 from "../../assets/img/imagen2.webp";
 
@@ -8,4 +8,4 @@ const ImageTest = () => {
 };
 
 
-export default [ template, ImageTest ];
+export default [ template, styles, ImageTest ];

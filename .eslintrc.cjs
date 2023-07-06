@@ -48,7 +48,8 @@ const config = {
     "max-len": "off",
     "space-before-function-paren": "off",
     "computed-property-spacing": "off",
-    "curly": "off"
+    "curly": "off",
+    "linebreak-style": "off"
   },
   plugins: [
     "jquery"

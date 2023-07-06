@@ -5,7 +5,7 @@ import axios from "axios";
 import endPoints from "../../services/endpoints";
 
 import template from "./index.html?raw";
-import "./styles.css";
+import styles from "./styles.css?raw";
 
 const Home = async () => {
 
@@ -35,4 +35,4 @@ const Home = async () => {
   });
 };
 
-export default [ template, Home ];
+export default [ template, styles, Home ];

@@ -11,9 +11,14 @@ const routes = {
 const appRoot = document.getElementById("app");
 
 const router = (route) => {
-  const [ template, render ] = routes[route];
-  appRoot.innerHTML = template;
-  render();
+  const [ template, styles, js ] = routes[route];
+  appRoot.innerHTML = `
+    <style>
+      ${styles}
+    </style>
+    ${template}
+  `;
+  js();
 };
 
 export { router };
