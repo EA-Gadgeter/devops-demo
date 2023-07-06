@@ -1,0 +1,31 @@
+@import url("./normalize.css");
+@import url("../node_modules/evo-calendar/evo-calendar/css/evo-calendar.css");
+@import url("../node_modules/datatables.net-dt/css/jquery.dataTables.min.css");
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+}
+
+header {
+  width: 100%;
+}
+
+nav ul {
+ display: flex;
+ justify-content: space-evenly;
+ 
+ margin: 2rem 0;
+}
+
+nav ul li {
+  list-style: none;
+}

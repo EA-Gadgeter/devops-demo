@@ -49,7 +49,8 @@ const config = {
     "space-before-function-paren": "off",
     "computed-property-spacing": "off",
     "curly": "off",
-    "linebreak-style": "off"
+    "linebreak-style": "off",
+    "no-var": "error"
   },
   plugins: [
     "jquery"
