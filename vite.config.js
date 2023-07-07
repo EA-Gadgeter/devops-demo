@@ -1,9 +1,11 @@
-/**
- * @type {import('vite').UserConfig}
- */
+import { defineConfig, loadEnv } from "vite";
 
-const config = {
-  base: "/devops-demo/"
+export default ({ mode }) => {
+
+  // Load app-level env vars to node-level env vars.
+  process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
+
+  return defineConfig({
+    base: process.env.VITE_APP_ROUTE_CONFIG
+  });
 };
-
-export default config;

@@ -63,7 +63,11 @@ jobs:
       - name: Instalar Dependencias
         run: npm ci
       - name: Crear .env
-        run: echo VITE_API=${{ secrets.API_ROUTE }} >> .env
+        run: |
+          echo VITE_API=${{ secrets.API_ROUTE }} >> .env
+          echo VITE_APP_ROUTE_CONFIG=${{ secrets.APP_ROUTE_CONFIG }} >> .env
+          echo VITE_APP_ROUTE=${{ secrets.APP_ROUTE }} >> .env
+          cat .env
       - name: Build
         run: npm run build
       - name: Configurar Github Pages
