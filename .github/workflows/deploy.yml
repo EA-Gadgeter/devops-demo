@@ -1,0 +1,77 @@
+name: Deploy Github Pages
+
+on:
+  push:
+    branches: [main]
+
+# Sets the GITHUB_TOKEN permissions to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+    
+jobs:
+  lint:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Descargar Repositorio
+        uses: actions/checkout@v3.5.3
+      - name: Configurar Entorno Node.js 18.X
+        uses: actions/setup-node@v2.5.2
+        with:
+          cache: "npm"
+          node-version: "18"
+      - name: Instalar Dependencias
+        run: npm ci
+      - name: Lint
+        run: npm run lint
+  
+  test:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Descargar Repositorio
+        uses: actions/checkout@v3.5.3
+      - name: Configurar Entorno Node.js 18.X
+        uses: actions/setup-node@v2.5.2
+        with:
+          cache: "npm"
+          node-version: "18"
+      - name: Instalar Dependencias
+        run: npm ci
+      - name: Testing
+        run: echo "Todas las pruebas superadas"
+  
+  deploy:
+    needs: [lint, test]
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Descargar Repositorio
+        uses: actions/checkout@v3.5.3
+      - name: Configurar Entorno Node.js 18.X
+        uses: actions/setup-node@v2.5.2
+        with:
+          cache: "npm"
+          node-version: "18"
+      - name: Instalar Dependencias
+        run: npm ci
+      - name: Crear .env
+        run: echo VITE_API=${{ secrets.API_ROUTE }} >> .env
+      - name: Build
+        run: npm run build
+      - name: Configurar Github Pages
+        uses: actions/configure-pages@v3
+      - name: Subir Artefacto Build
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: './dist'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1

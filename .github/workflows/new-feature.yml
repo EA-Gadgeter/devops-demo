@@ -11,8 +11,6 @@ jobs:
     steps:
       - name: Descargar Repositorio
         uses: actions/checkout@v3.5.3
-        with:
-            fetch-dept: 0
       - name: Configurar Entorno Node.js 18.X
         uses: actions/setup-node@v2.5.2
         with:
