@@ -8,8 +8,9 @@ import template from "./index.html?raw";
 import styles from "./styles.css?raw";
 
 const Home = async () => {
-
   const { data: productsData } = await axios.get(endPoints.products.getProducts(50, 0));
+
+  let variable;
 
   new DataTable("#products", {
     data: productsData,
