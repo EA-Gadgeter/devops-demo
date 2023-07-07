@@ -3,7 +3,7 @@
  */
 
 const config = {
-
+  base: "/devops-demo/"
 };
 
 export default config;
